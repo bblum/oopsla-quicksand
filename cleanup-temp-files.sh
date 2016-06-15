@@ -9,3 +9,4 @@ rm -f qs/ls-output.log.*
 rm -f qs/ls-setup.log.*
 rm -f ls/config.quicksand.*
 rm -f ls/pps-and-such.quicksand.*
+rm -f landslide-trace-*.html
