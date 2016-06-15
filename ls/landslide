@@ -1,0 +1,74 @@
+#!/bin/bash
+
+function die {
+	echo -e "\033[01;31merror: $1\033[00m"
+	if [ ! -z "$OUTPUT_PIPE" ]; then
+		# run from quicksand; don't leave job thread hanging!
+		echo -n > "$OUTPUT_PIPE"
+		echo -e "\033[01;33merror: $1\033[00m" > /dev/tty
+		echo -e "\033[01;33msorry, we did not provide pre-recorded logs for the experiment you just tried to run...\033[00m" >/dev/tty
+	fi
+	exit 1
+}
+if [ "`pwd | sed 's/.*\///'`" != "ls" ]; then
+	die "$0 must be run from the ls directory."
+fi
+
+QUICKSAND_CONFIG_STATIC="$1"
+QUICKSAND_CONFIG_DYNAMIC="$2"
+
+if [ ! -f "$QUICKSAND_CONFIG_STATIC" ]; then
+	die "missing $QUICKSAND_CONFIG_STATIC"
+elif [ ! -f "$QUICKSAND_CONFIG_DYNAMIC" ]; then
+	die "missing $QUICKSAND_CONFIG_DYNAMIC"
+fi
+
+function id_magic {
+	MAGIC=$1
+}
+source "$QUICKSAND_CONFIG_STATIC"
+
+INPUT_PIPE=`grep input_pipe "$QUICKSAND_CONFIG_DYNAMIC" | sed 's/input_pipe //'`
+OUTPUT_PIPE=`grep output_pipe "$QUICKSAND_CONFIG_DYNAMIC" | sed 's/output_pipe //'`
+
+OOPSLA_AEC_BASE_DIR=logs
+
+if [ "$PREEMPT_EVERYWHERE" = "1" ]; then
+	OOPSLA_AEC_DIR="$OOPSLA_AEC_BASE_DIR/everywhere/$TEST_CASE"
+elif [ "$ICB" = "1" ]; then
+	OOPSLA_AEC_DIR="$OOPSLA_AEC_BASE_DIR/icb/$TEST_CASE"
+else
+	OOPSLA_AEC_DIR="$OOPSLA_AEC_BASE_DIR/qs/$TEST_CASE"
+fi
+
+if [ ! -d "$OOPSLA_AEC_DIR" ]; then
+	die "missing log dir $OOPSLA_AEC_DIR"
+fi
+
+TEMP_QSD=`mktemp "$QUICKSAND_CONFIG_DYNAMIC.XXXXXXXX"`
+sort "$QUICKSAND_CONFIG_DYNAMIC" | grep -v "^output_pipe" | grep -v "^input_pipe" >> $TEMP_QSD
+
+LOGFILE=
+FOUND_LOGFILE=0
+for logdir in `ls -d $OOPSLA_AEC_DIR/logs.* 2>/dev/null`; do
+	if cmp "$TEMP_QSD" "$logdir/pps" >/dev/null 2>/dev/null; then
+		LOGFILE="$logdir/messages"
+		FOUND_LOGFILE=1
+		break
+	fi
+done
+
+if [ "$FOUND_LOGFILE" = 1 ]; then
+	if [ ! -f "$LOGFILE" ]; then
+		if ls "$LOGFILE.gz" >/dev/null 2>/dev/null; then
+			zcat "$LOGFILE.gz" > "$LOGFILE"
+		else
+			die "missing message log $LOGFILE!"
+		fi
+	fi
+	echo "using message log $LOGFILE"
+	LANDSLIDE_AEC="./landslide-aec"
+	exec ./$LANDSLIDE_AEC "$LOGFILE" "$MAGIC" "$INPUT_PIPE" "$OUTPUT_PIPE"
+else
+	die "couldn't find a matching PP config for $QUICKSAND_CONFIG_DYNAMIC!"
+fi
