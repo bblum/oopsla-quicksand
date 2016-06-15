@@ -13,4 +13,5 @@ if [ "$RV" = "$ID_EXIT_CTRL_C" ]; then
 	reset -I
 	echo
 fi
+echo -ne "\033[00m"
 exit $RV
