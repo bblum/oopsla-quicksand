@@ -1,0 +1,10 @@
+data_race 0x1001237 0x5 0x0 0x0
+data_race 0x100124f 0x5 0x0 0x0
+TEST_CASE=thr_exit_join
+within_user_function mutex_unlock
+without_user_function calloc
+without_user_function free
+without_user_function malloc
+without_user_function mutex_lock
+without_user_function mutex_unlock
+without_user_function realloc

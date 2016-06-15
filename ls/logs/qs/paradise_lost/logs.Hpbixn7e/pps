@@ -1,0 +1,13 @@
+data_race 0x102917 0x6 0x0 0x46
+TEST_CASE=paradise_lost
+within_user_function mutex_unlock
+without_user_function calloc
+without_user_function critical_section
+without_user_function free
+without_user_function malloc
+without_user_function mutex_lock
+without_user_function mutex_unlock
+without_user_function realloc
+without_user_function thr_create
+without_user_function thr_exit
+without_user_function thr_init
