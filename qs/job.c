@@ -385,7 +385,7 @@ void print_job_stats(struct job *j, bool pending, bool blocked)
 			print_human_friendly_time(&j->estimate_elapsed);
 			/* Time between start of any statespaces whatsoever
 			 * until a bug was found in this one. */
-			PRINT("; pldi time %lu; new-fixed pldi cputime %lu",
+			PRINT("; oopslsa time %lu; new-fixed oopslsa cputime %lu",
 			      j->fab_timestamp, j->fab_cputime);
 		}
 		PRINT(")\n");
@@ -428,7 +428,7 @@ void print_job_stats(struct job *j, bool pending, bool blocked)
 	PRINT("       ");
 	if (j->log_filename != NULL) {
 		// FIXME: "id/" -- better solution for where log files should go
-		PRINT(COLOUR_DARK COLOUR_GREY "Log: id/%s -- ", j->log_filename);
+		PRINT(COLOUR_DARK COLOUR_GREY "Log: qs/%s -- ", j->log_filename);
 	}
 	PRINT(COLOUR_DARK COLOUR_GREY "PPs: ");
 	printf(COLOUR_GREY);

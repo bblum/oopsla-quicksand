@@ -18,7 +18,7 @@
 #include "common.h"
 #include "option.h"
 
-#define MINTIME ((unsigned long)600) /* 10 mins */
+#define MINTIME ((unsigned long)60) /* 1 min */
 #define DEFAULT_TIME "1h"
 #define DEFAULT_TEST_CASE "thr_exit_join"
 #define DEFAULT_PROGRESS_INTERVAL "10" /* seconds */

@@ -19,7 +19,7 @@
 
 // FIXME make more flexible
 #define LANDSLIDE_PROGNAME "landslide"
-#define LANDSLIDE_PATH "../pebsim"
+#define LANDSLIDE_PATH "../ls"
 #define ROOT_PATH ".."
 
 struct file {
