@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ ! -d "ls" -o ! -d "qs" ]; then
+	echo "$0 must be run from the root of the quicksand repository"
+	exit 1
+fi
+
+cd qs/
+./quicksand "$@"
+RV=$?
+cd ../
+if [ "$RV" = "$ID_EXIT_CTRL_C" ]; then
+	reset -I
+	echo
+fi
+exit $RV
