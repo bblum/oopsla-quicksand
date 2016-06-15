@@ -90,3 +90,141 @@ so on (and "make clean && make" obviously).
 
 Quicksand may leave behind log and config files if you ctrl-C it. You can
 safely delete these with ./cleanup-temp-files.sh.
+
+==== Step by Step Instructions ====
+
+The getting started guide roughly covers the extent of what can be done with
+the pre-recorded logs we supplied for the AEC. This section will serve as a
+guide to Quicksand's interface with the model checker (MC), to aid users who
+wish to port their own model checker for use with Quicksand.
+
+---- Config files ----
+
+Quicksand executes each MC with two configuration files as command-line
+arguments. The first of these is the "static" config: options that will not
+change across jobs within a single run of Quicksand, such as which test program
+to run, whether to run an ICB control experiment, etc. The second is the
+"dynamic" config, containing options that are unique to each job, such as which
+preemption points to use. (The reason for the two files is that Landslide needs
+to do some automatic but expensive instrumentation whenever the test program
+changes.)
+
+These files are in a bash script format. Some options are specified as
+environment variables, while others call bash functions, assuming that such
+functions will be defined already. We recommend writing a wrapper script which
+will define these functions, process the environment variables, and pass those
+options on to your MC. Consult the ls/landslide script as an example.
+
+The static config options are:
+
+- TEST_CASE (env var): Whatever program is passed to quicksand via "-p"
+- VERBOSE (env var): 0 or 1 depending if "-v" is specified
+- ICB (env var): 0 or 1 depending if "-I" is specified ("SSS-MC-ICB" in the paper)
+- PREEMPT_EVERYWHERE (env var): 0 or 1 depending if "-0" is specified (called
+  "SSS-MC-Shared-Mem" in the paper)
+- id_magic (function): A magic number which quicksand will send to identify its
+  version in the messaging protocol, used for assertions
+
+The dynamic config options are:
+
+- TEST_CASE (env var): Same as before.
+- without_function/within_function (functions): Indicates a list of functions
+  which should be whitelisted or blacklisted when the MC checks where to
+  insert preemption points. The MC should implement Preemption Sealing (see
+  paper section 4.1) to interpret these commands. These are also used to
+  indicate whether the static synchronization API PPs (mutex_lock,
+  mutex_unlock, etc) should be considered for each job.
+- data_race (function): Indicates a data-race preemption point. Arguments are:
+  - the instruction pointer involved in the race,
+  - the thread ID of the thread which executed it,
+  - the address of the most recent "call" instruction, or 0 (described in
+    messaging protocol below)
+  - the interrupt number of the most recent system call, or 0 (described below)
+- input_pipe/output_pipe (functions): Filenames of the FIFO files which should
+  be used for message-passing.
+
+Those who prefer to source-dive to figure out how these options are issued
+should start their search in run_job() in qs/job.c.
+
+---- Messaging interface ----
+
+During execution, Quicksand and the MC communicate by sending messages over
+two FIFO files, the input pipe (messages from QS to MC) and the output pipe
+(from MC to QS). This corresponds to input_pipe/output_pipe in the config
+files (although in the Quicksand source, these names are reversed). The format
+of the messages is specified at the top of qs/messaging.c.
+
+There are 6 types of output messages (see "enum tag"). Unless otherwise
+specified below, the MC should just send messages and not wait for replies.
+When the MC does need to wait for a reply, there are 3 types of reply (input)
+messages (see the other "enum tag").
+
+Both message types have a "magic" field, which should match the "id_magic"
+value provided in the static config file, and a "tag" field which indicates
+the message type (as well as which branch of the subsequent union to use).
+It's just a sum type in C.
+
+Output messages:
+- THUNDERBIRDS_ARE_GO: Sent once during initialization when the MC is ready to
+  start testing. (Note that because of the nature of FIFOs, to avoid deadlock,
+  this message must be sent between opening the output pipe and opening the
+  input pipe.)
+- DATA_RACE: Sent whenever the MC detects a new data-race candidate. Fields:
+  - content.dr.eip: The instruction pointer of the race
+  - content.dr.tid: The TID which executed that eip
+  - content.dr.last_call: The address of the last "call" instruction preceding
+    the race. The MC may optionally specify this to filter the identification
+    of data-race candidates if there are too many, or it may just send 0 as a
+    wild-card.
+  - content.dr.most_recent_syscall: The number of the most recent system call
+    before the racing instruction, if in kernel-space. 0 if the race came from
+    user-space. This may be used when kernel system calls write into shared
+    user memory, such as read().
+  - content.dr.confirmed: True if the MC has classified the race as
+    "both-order" (see paper section 3.4, and paper citation [46]). Used for
+    heuristic job priorities.
+  - content.dr.deterministic: True if the MC observed the race on the first
+    branch. Used for our "nondeterministic race" experiment (paper section
+    6.4).
+  - content.dr.free_re_malloc: True if it's a malloc-recycle candidate (paper
+    section 6.4)
+- ESTIMATE: Sent at the completion of each tested interleaving to communicate
+  a state space estimate. Fields:
+  - content.estimate.proportion: Between 0.0L and 1.0L. Indicates expected
+    proportion of the tree already explored.
+  - content.estimate.elapsed_branches: Number completed interleavings tested
+  - content.estimate.total_usecs: Estimated total time the state space will
+    take (counting elapsed time)
+  - content.estimate.elapsed_usecs: self-explanatory
+  - content.estimate.icb_cur_bound: Current ICB bound; ignored without "-I"
+- FOUND_A_BUG: Sent when the MC observes a failure. Fields:
+  - content.bug.trace_filename: Filename containing whatever debug output the
+    MC provides.
+  - content.bug.icb_preemption_count: How many preemptions, as defined by the
+    ICB implementation, were needed to uncover this failure
+- SHOULD_CONTINUE: Sent whenever the MC is able to exit due to a time-out of
+  the CPU budget. Landslide sends this message after each ESTIMATE message.
+- ASSERT_FAILED: Edit your assert infrastructure so that if your MC ever
+  crashes, it lets Quicksand know. Otherwise Quicksand will hang on a read.
+  - content.crash_report.assert_message: A string to relay to the user.
+
+Input messages:
+- SHOULD_CONTINUE_REPLY: Sent in reply to SHOULD_CONTINUE or ESTIMATE. If this
+  message type, then "value" is set: false if should continue, true if should
+  abort.  (I know, it's backwards, sorry...)
+- SUSPEND_TIME: Sent in reply to ESTIMATE if Quicksand wants the job to
+  suspend.
+- RESUME_TIME: Sent after a SUSPEND_TIME if Quicksand resumes the job. Also
+  sent to all deferred jobs when time is up, so they can exit cleanly (via
+  SHOULD_CONTINUE).
+
+Message protocol:
+- Whenever the MC sends a ESTIMATE output message, it must read an input
+  message in response. If that message is SUSPEND_TIME, it must then wait
+  again (via read() on the input pipe) until a RESUME_TIME message comes.
+- Whenever the MC sends a SHOULD_CONTINUE output message, it must read for a
+  SHOULD_CONTINUE_REPLY.
+- Otherwise, the MC shall not use read() on the input pipe.
+
+Those who prefer to source-dive should use ls/landslide-aec.c as a starting
+point for the messaging protocol.
