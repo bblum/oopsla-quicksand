@@ -23,6 +23,8 @@ ability to be adapted with other available checkers.
 Our artifact is provided in a VM image that we made using VirtualBox version
 5.0.20.106931. To set up, add the image in VirtualBox as a 64-bit Ubuntu
 machine, log in as "aec" with password "aec", and cd to /home/aec/quicksand/.
+Please configure the VM to use several processors (ideally at least 4) to take
+full advantage of Quicksand's parallelism.
 
 Within this directory:
 - 'qs', containing Quicksand's source,
@@ -32,6 +34,9 @@ Within this directory:
 
 qs/ and ls/ contain prebuilt binaries for Quicksand and Landslide, but you can
 refresh them with a simple make clean && make.
+
+In the event that our VM image doesn't work, a clone of our git repository
+https://github.com/bblum/oopsla-aec should work on any 64-bit linux system.
 
 ---- Basic testing ----
 
