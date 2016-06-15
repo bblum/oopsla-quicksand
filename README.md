@@ -184,7 +184,9 @@ Output messages:
   - content.dr.most_recent_syscall: The number of the most recent system call
     before the racing instruction, if in kernel-space. 0 if the race came from
     user-space. This may be used when kernel system calls write into shared
-    user memory, such as read().
+    user memory, such as read(). This option and last_call are not interpreted
+    by Quicksand, used only for equality comparison and parroted back to other
+    MC instances via the config files.
   - content.dr.confirmed: True if the MC has classified the race as
     "both-order" (see paper section 3.4, and paper citation [46]). Used for
     heuristic job priorities.
@@ -192,7 +194,7 @@ Output messages:
     branch. Used for our "nondeterministic race" experiment (paper section
     6.4).
   - content.dr.free_re_malloc: True if it's a malloc-recycle candidate (paper
-    section 6.4)
+    section 5.2 / 6.4)
 - ESTIMATE: Sent at the completion of each tested interleaving to communicate
   a state space estimate. Fields:
   - content.estimate.proportion: Between 0.0L and 1.0L. Indicates expected
@@ -233,3 +235,26 @@ Message protocol:
 
 Those who prefer to source-dive should use ls/landslide-aec.c as a starting
 point for the messaging protocol.
+
+---- Codebase ----
+
+Finally, we provide a brief overview of the different components of Quicksand
+for those with ideas to improve its algorithm on their own.
+
+- pp.c implements a global registry of both statically known and dynamically
+  discovered preemption points, and provides some utilities for subset and
+  equality comparison between preemption point sets.
+- work.c implements the multithreaded workqueue, and implements the Iterative
+  Deepening algorithm for deciding which jobs to run next (should_work_block()
+  and get_work(); Algorithm 1 in the paper). It also implements the scheduling
+  logic for the periodic progress report thread (progress_report_thread()).
+- job.c contains code for the dedicated threads which create and communicate
+  with each MC instance. The config file interface as well as some process
+  lifecycle management can be found in run_job().
+- messaging.c implements the message-passing protocol (talk_to_child()), and
+  contains the algorithm for adding new jobs based on data race reports
+  (handle_data_race(); Algorithm 2 in the paper). It also has some logic
+  related to Algorithm 1 (handle_estimate()).
+- option.c defines quicksand's command-line options. main.c processes them and
+  hands off control to the work queue threads.
+- bug.c, io.c, signals.c and time.c provide various boring utility functions.
