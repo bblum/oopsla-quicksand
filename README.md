@@ -90,39 +90,3 @@ so on (and "make clean && make" obviously).
 
 Quicksand may leave behind log and config files if you ctrl-C it. You can
 safely delete these with ./cleanup-temp-files.sh.
-
-==== Step by Step Instructions ====
-
-The getting started guide roughly covers the extent of what can be done with
-the pre-recorded logs we supplied for the AEC. This section will serve as a
-guide to Quicksand's interface with the model checker (MC), to aid users who
-wish to port their own model checker for use with Quicksand.
-
----- Config files ----
-
-Quicksand executes each MC with two configuration files as command-line
-arguments. The first of these is the "static" config: options that will not
-change across jobs within a single run of Quicksand, such as which test program
-to run, whether to run an ICB control experiment, etc. The second is the
-"dynamic" config, containing options that are unique to each job, such as which
-preemption points to use. (The reason for the two files is that Landslide needs
-to do some automatic but expensive instrumentation whenever the test program
-changes.)
-
-These files are in a bash script format. Some options are specified as
-environment variables, while others call bash functions, assuming that such
-functions will be defined already. We recommend writing a wrapper script which
-will define these functions, process the environment variables, and pass those
-options on to your MC.
-
-The static config options are:
-
-- TEST_CASE (env var): Whatever program is passed to quicksand via "-p"
-- VERBOSE (env var): 0 or 1 depending if "-v" is specified
-- ICB (env var): 0 or 1 depending if "-I" is specified ("SSS-MC-ICB" in the paper)
-- PREEMPT_EVERYWHERE (env var): 0 or 1 depending if "-0" is specified (called
-  "SSS-MC-Shared-Mem" in the paper)
-- id_magic (function): A magic number which quicksand will send to identify its
-  version in the messaging protocol, used for assertions
-- DR_PPS_RESPECT_WITHIN_FUNCTIONS (env var): 0, 1, or absent. Used with
-  PREEMPT_EVERYWHERE to indicate [...] TODO
