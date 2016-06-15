@@ -1,0 +1,47 @@
+==== PROGRESS REPORT ====
+total time elapsed: 1m 14s
+[JOB 0] COMPLETE (3 interleavings tested; 9s elapsed)
+       PPs: { }
+[JOB 1] COMPLETE (29 interleavings tested; 35s elapsed)
+       PPs: { 'mutex_lock' }
+[JOB 3] TIMED OUT (13.476562%; ETA 6m 7s)
+       PPs: { 'mutex_lock' 'mutex_unlock' }
+[JOB 2] TIMED OUT (46.093750%; ETA 1m 1s)
+       PPs: { 'mutex_unlock' }
+[JOB 10] COMPLETE (6 interleavings tested; 15s elapsed)
+       PPs: { 'DR 4@ 0x100123c' }
+[JOB 6] COMPLETE (5 interleavings tested; 16s elapsed)
+       PPs: { 'DR 5@ 0x10010d3' }
+[JOB 12] BUG FOUND: landslide-trace-1465946180.22.html (2 interleavings tested; 3 preemptions; job time 10s; oopsla time 47366225; new-fixed oopsla cputime 188553243)
+       PPs: { 'DR 4@ 0x1000dce' }
+[JOB 14] COMPLETE (3 interleavings tested; 16s elapsed)
+       PPs: { 'DR 5@ 0x1000dce' }
+[JOB 16] COMPLETE (3 interleavings tested; 11s elapsed)
+       PPs: { 'DR 5@ 0x100123c' }
+[JOB 18] TIMED OUT (25.000000%; ETA 1s)
+       PPs: { 'DR 4@ 0x1001237' }
+[JOB 20] TIMED OUT (25.000000%; ETA 4s)
+       PPs: { 'DR 4@ 0x10003ba' }
+And 52 more pending jobs should time allow.
+No free-re-malloc false positives were avoided.
+=========================
+NOTE: I discovered the following POTENTIALLY-RACY accesses,
+but was not able to confirm them either way as benign or buggy.
+You may wish to inspect them manually, if the following info is convenient:
+Data race at 0x010010d3 in cond_wait (p2-basecode/user/libthread/cond.c:194)
+Data race at 0x0100123c in thr_exit_helper (p2-basecode/410user/progs/thr_exit_join.c:31)
+Data race at 0x01000dce in mutex_unlock (p2-basecode/user/libthread/mutex.c:106)
+Data race at 0x01000dce in <unknown in userspace>
+Data race at 0x0100123c in <unknown in userspace>
+Data race at 0x01001237 in <unknown in userspace>
+Data race at 0x010003ba in <unknown in userspace>
+Data race at 0x01000141 in <unknown in userspace>
+Data race at 0x01001237 in <unknown in userspace>
+Data race at 0x010003ba in <unknown in userspace>
+Data race at 0x01000141 in <unknown in userspace>
+Data race at 0x0100124f in thr_get_esp (p2-basecode/410user/progs/thr_exit_join.c:31)
+Data race at 0x010008a1 in thr_getid (p2-basecode/user/libthread/thr.c:588)
+Data race at 0x010011b8 in cond_broadcast (p2-basecode/user/libthread/cond.c:255)
+No free-re-malloc false positives were avoided.
+total CPU time consumed: 4m 23s (263102204 usecs) (core saturation: 87%)
+Found a bug - landslide-trace-1465946180.22.html - with PPs: { 'DR 4@ 0x1000dce' } (log file: qs/ls-output.log.yyVmWG)

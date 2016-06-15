@@ -1,0 +1,204 @@
+==== PROGRESS REPORT ====
+total time elapsed: 10m 16s
+[JOB 0] COMPLETE (3 interleavings tested; 7s elapsed)
+       PPs: { }
+[JOB 1] COMPLETE (28 interleavings tested; 13s elapsed)
+       PPs: { 'mutex_lock' }
+[JOB 3] COMPLETE (166 interleavings tested; 48s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' }
+[JOB 2] COMPLETE (31 interleavings tested; 14s elapsed)
+       PPs: { 'mutex_unlock' }
+[JOB 4] COMPLETE (4 interleavings tested; 8s elapsed)
+       PPs: { 'DR 5@ 0x102917' }
+[JOB 6] COMPLETE (5 interleavings tested; 8s elapsed)
+       PPs: { 'DR 5@ 0x10005cf' }
+[JOB 7] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' }
+[JOB 8] COMPLETE (5 interleavings tested; 9s elapsed)
+       PPs: { 'DR 5@ 0x102917' }
+[JOB 10] COMPLETE (3 interleavings tested; 7s elapsed)
+       PPs: { 'DR 5@ 0x100075b' }
+[JOB 5] COMPLETE (73 interleavings tested; 24s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' }
+[JOB 9] COMPLETE (42 interleavings tested; 22s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' }
+[JOB 20] COMPLETE (3 interleavings tested; 7s elapsed)
+       PPs: { 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 17] COMPLETE (31 interleavings tested; 16s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' }
+[JOB 22] COMPLETE (34 interleavings tested; 15s elapsed)
+       PPs: { 'mutex_unlock' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 16] COMPLETE (40 interleavings tested; 17s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' }
+[JOB 12] COMPLETE (320 interleavings tested; 1m 23s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' }
+[JOB 18] COMPLETE (45 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' }
+[JOB 29] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 26] COMPLETE (99 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' }
+[JOB 13] COMPLETE (166 interleavings tested; 45s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' }
+[JOB 30] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 27] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 19] COMPLETE (31 interleavings tested; 14s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x100075b' }
+[JOB 11] COMPLETE (28 interleavings tested; 13s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x100075b' }
+[JOB 42] COMPLETE (31 interleavings tested; 14s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 15] COMPLETE (166 interleavings tested; 46s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x100075b' }
+[JOB 14] COMPLETE (216 interleavings tested; 1m 11s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' }
+[JOB 21] COMPLETE (208 interleavings tested; 55s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 28] COMPLETE (42 interleavings tested; 21s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 44] COMPLETE (45 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 23] COMPLETE (145 interleavings tested; 40s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' }
+[JOB 24] COMPLETE (99 interleavings tested; 37s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 25] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 31] COMPLETE (59 interleavings tested; 20s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 32] COMPLETE (34 interleavings tested; 15s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 33] COMPLETE (50 interleavings tested; 26s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 34] COMPLETE (34 interleavings tested; 14s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 35] COMPLETE (40 interleavings tested; 16s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' }
+[JOB 36] COMPLETE (56 interleavings tested; 26s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' }
+[JOB 37] COMPLETE (40 interleavings tested; 17s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 41] COMPLETE (45 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 43] COMPLETE (460 interleavings tested; 2m 5s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 51] COMPLETE (99 interleavings tested; 38s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 69] COMPLETE (56 interleavings tested; 28s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 50] COMPLETE (189 interleavings tested; 1m 0s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 55] COMPLETE (145 interleavings tested; 39s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 47] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 46] COMPLETE (99 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 53] COMPLETE (73 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 54] COMPLETE (208 interleavings tested; 1m 0s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 45] COMPLETE (145 interleavings tested; 42s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 52] COMPLETE (99 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 58] COMPLETE (34 interleavings tested; 15s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 61] COMPLETE (270 interleavings tested; 1m 29s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 60] COMPLETE (208 interleavings tested; 56s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 59] COMPLETE (216 interleavings tested; 1m 13s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 64] COMPLETE (50 interleavings tested; 25s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 63] COMPLETE (56 interleavings tested; 26s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 62] COMPLETE (99 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 57] COMPLETE (45 interleavings tested; 23s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 68] COMPLETE (50 interleavings tested; 24s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 67] COMPLETE (59 interleavings tested; 20s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 66] COMPLETE (83 interleavings tested; 34s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 49] COMPLETE (166 interleavings tested; 46s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 48] COMPLETE (216 interleavings tested; 1m 14s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 65] COMPLETE (59 interleavings tested; 20s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 56] COMPLETE (40 interleavings tested; 19s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 40] COMPLETE (320 interleavings tested; 1m 26s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 38] COMPLETE (320 interleavings tested; 1m 30s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' }
+[JOB 39] COMPLETE (408 interleavings tested; 2m 13s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' }
+[JOB 72] COMPLETE (460 interleavings tested; 2m 10s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 89] COMPLETE (408 interleavings tested; 2m 32s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' }
+[JOB 88] COMPLETE (320 interleavings tested; 1m 42s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' }
+[JOB 71] COMPLETE (588 interleavings tested; 3m 12s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 73] COMPLETE (189 interleavings tested; 1m 1s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 75] COMPLETE (56 interleavings tested; 27s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 79] COMPLETE (99 interleavings tested; 37s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 78] COMPLETE (145 interleavings tested; 40s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 77] COMPLETE (189 interleavings tested; 1m 11s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 70] COMPLETE (460 interleavings tested; 2m 26s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 85] COMPLETE (83 interleavings tested; 39s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 86] COMPLETE (408 interleavings tested; 2m 22s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 87] COMPLETE (216 interleavings tested; 1m 16s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 74] COMPLETE (99 interleavings tested; 37s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 81] COMPLETE (208 interleavings tested; 56s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 84] COMPLETE (270 interleavings tested; 1m 30s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 82] COMPLETE (59 interleavings tested; 25s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 83] COMPLETE (50 interleavings tested; 35s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 76] COMPLETE (83 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 80] COMPLETE (270 interleavings tested; 1m 43s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 91] COMPLETE (588 interleavings tested; 2m 58s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 96] COMPLETE (270 interleavings tested; 1m 33s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 93] COMPLETE (588 interleavings tested; 3m 12s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 94] COMPLETE (189 interleavings tested; 1m 1s elapsed)
+       PPs: { 'mutex_lock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 95] COMPLETE (83 interleavings tested; 36s elapsed)
+       PPs: { 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 90] COMPLETE (460 interleavings tested; 2m 0s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+[JOB 92] COMPLETE (408 interleavings tested; 2m 12s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' }
+[JOB 97] COMPLETE (588 interleavings tested; 3m 1s elapsed)
+       PPs: { 'mutex_lock' 'mutex_unlock' 'DR 5@ 0x102917' 'DR 5@ 0x10005cf' 'DR 5@ 0x102917' 'DR 5@ 0x100075b' 'DR 4@ 0x10006b4' [NONDET] }
+And 0 more pending jobs should time allow.
+No free-re-malloc false positives were avoided.
+=========================
+No free-re-malloc false positives were avoided.
+total CPU time consumed: 1h 24m 29s (5069521502 usecs) (core saturation: 82%)
+No bugs were found -- you survived!

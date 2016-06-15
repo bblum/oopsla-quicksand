@@ -1,0 +1,26 @@
+==== PROGRESS REPORT ====
+total time elapsed: 1h 0s
+[JOB 0] TIMED OUT (30.173370%; ETA 2h 38s; cur ICB bound 5)
+       PPs: { 'mutex_lock' 'mutex_unlock' }
+And 0 more pending jobs should time allow.
+No free-re-malloc false positives were avoided.
+=========================
+NOTE: I discovered the following POTENTIALLY-RACY accesses,
+but was not able to confirm them either way as benign or buggy.
+You may wish to inspect them manually, if the following info is convenient:
+Data race at 0x01001563 in cond_wait (p2-basecode/user/libthread/cond.c:194)
+Data race at 0x0100044c in atomic_incr (p2-basecode/410user/progs/paradise_lost.c:87)
+Data race at 0x010003cd in mutex_lock (p2-basecode/user/libthread/mutex.c:78)
+Data race at 0x010016df in thr_get_esp (p2-basecode/410user/progs/paradise_lost.c:87)
+Data race at 0x01000c61 in thr_getid (p2-basecode/user/libthread/thr.c:588)
+Data race at 0x01001563 in cond_wait (p2-basecode/user/libthread/cond.c:194)
+Data race at 0x0100044c in atomic_incr (p2-basecode/410user/progs/paradise_lost.c:87)
+Data race at 0x010003cd in mutex_lock (p2-basecode/user/libthread/mutex.c:78)
+Data race at 0x010016df in thr_get_esp (p2-basecode/410user/progs/paradise_lost.c:87)
+Data race at 0x01000c61 in thr_getid (p2-basecode/user/libthread/thr.c:588)
+Data race at 0x010015e4 in cond_signal (p2-basecode/user/libthread/cond.c:225)
+Data race at 0x010015e4 in cond_signal (p2-basecode/user/libthread/cond.c:225)
+Data race at 0x010015e4 in cond_signal (p2-basecode/user/libthread/cond.c:225)
+No free-re-malloc false positives were avoided.
+total CPU time consumed: 1h 0s (3600520868 usecs) (core saturation: 9%)
+No bugs were found -- you survived!
