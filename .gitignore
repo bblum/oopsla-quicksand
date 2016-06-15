@@ -3,6 +3,8 @@
 *.ko
 *.obj
 *.elf
+ls/landslide-aec
+qs/quicksand
 
 # Precompiled Headers
 *.gch
