@@ -35,9 +35,6 @@ Within this directory:
 qs/ and ls/ contain prebuilt binaries for Quicksand and Landslide, but you can
 refresh them with a simple make clean && make.
 
-In the event that our VM image doesn't work, a clone of our git repository
-https://github.com/bblum/oopsla-aec should work on any 64-bit linux system.
-
 ---- Basic testing ----
 
 The basic command we recommend to run in various incarnations is:

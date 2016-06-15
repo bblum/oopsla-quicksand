@@ -1,7 +1,6 @@
 /**
  * @file main.c
  * @brief iterative deepening framework for landslide
- * @author Ben Blum
  */
 
 #define _XOPEN_SOURCE 700

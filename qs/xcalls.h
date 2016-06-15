@@ -1,7 +1,6 @@
 /**
  * @file xcalls.h
  * @brief convenience wrapper macros for syscalls
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_SYSCALL_H

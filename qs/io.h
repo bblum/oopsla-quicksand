@@ -1,7 +1,6 @@
 /**
  * @file io.h
  * @brief i/o routines for communicating with other landslide processes
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_IO_H

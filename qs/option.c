@@ -1,7 +1,6 @@
 /**
  * @file option.c
  * @brief command line options
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #define _XOPEN_SOURCE 700

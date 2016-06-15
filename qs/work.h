@@ -1,7 +1,6 @@
 /**
  * @file work.h
  * @brief workqueue thread pool
- * @author Ben Blum
  */
 
 #ifndef __ID_WORK_H

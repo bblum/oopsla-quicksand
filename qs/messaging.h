@@ -1,7 +1,6 @@
 /**
  * @file messaging.h
  * @brief talking to child landslides
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_MESSAGING_H

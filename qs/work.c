@@ -1,7 +1,6 @@
 /**
  * @file work.c
  * @brief workqueue thread pool
- * @author Ben Blum
  */
 
 #define _XOPEN_SOURCE 700

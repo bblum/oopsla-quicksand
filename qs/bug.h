@@ -1,7 +1,6 @@
 /**
  * @file bug.h
  * @brief remembering which bugs have been found under which pp configs
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_FOUND_A_BUG_H

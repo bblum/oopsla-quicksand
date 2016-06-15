@@ -1,7 +1,6 @@
 /**
  * @file landslide-aec.c
  * @brief Dummy implementation of Landslide, our (sadly proprietary) model checker
- * @author Ben Blum
  */
 
 #define _GNU_SOURCE

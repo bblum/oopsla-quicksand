@@ -1,7 +1,6 @@
 /**
  * @file time.h
  * @brief time to stop asking stupid questions.
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_TIME_H

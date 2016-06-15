@@ -1,7 +1,6 @@
 /**
  * @file sync.h
  * @brief pthread sync convenience wrapper macros
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_SYNC_H

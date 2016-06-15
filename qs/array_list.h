@@ -1,7 +1,6 @@
 /**
  * @file array_list.h
  * @brief polymorphic auto-expanding array list
- * @author Ben Blum
  */
 
 #ifndef __ID_ARRAY_LIST_H

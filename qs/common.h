@@ -1,7 +1,6 @@
 /**
  * @file common.h
  * @brief things common to all parts of landslide
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_COMMON_H

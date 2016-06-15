@@ -1,7 +1,6 @@
 /**
  * @file time.c
  * @brief time to stop asking stupid questions.
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #include <pthread.h>

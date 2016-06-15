@@ -1,7 +1,6 @@
 /**
  * @file job.h
  * @brief job management
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_JOB_H

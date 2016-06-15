@@ -1,7 +1,6 @@
 /**
  * @file bug.c
  * @brief remembering which bugs have been found under which pp configs
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #define _XOPEN_SOURCE 700

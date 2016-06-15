@@ -1,7 +1,6 @@
 /**
  * @file option.h
  * @brief command line options
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_OPTION_H

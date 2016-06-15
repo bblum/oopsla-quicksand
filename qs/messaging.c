@@ -1,7 +1,6 @@
 /**
  * @file messaging.c
  * @brief talking to child landslides
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #define _XOPEN_SOURCE 700

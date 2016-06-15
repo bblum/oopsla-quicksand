@@ -1,7 +1,6 @@
 /**
  * @file io.c
  * @brief i/o routines for communicating with other landslide processes
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #define _XOPEN_SOURCE 700
@@ -18,25 +17,6 @@
 #include "io.h"
 #include "time.h"
 #include "xcalls.h"
-
-#if 0
-/* Students: don't modify this check. Honor code! */
-#define ACCESS_FILE "/afs/andrew/usr12/bblum/www/landslide-whitelist/access"
-#define LOGIN_REJECTED \
-	"ERROR: Before you may use Landslide, you and your partner must complete the sign-up checklist: http://www.contrib.andrew.cmu.edu/~bblum/landslide-sign-up.pdf"
-
-static void check_access_for_p2()
-{
-	int fd = open(ACCESS_FILE, O_RDONLY);
-	if (fd == -1) {
-		ERR("%s\n", LOGIN_REJECTED);
-		assert(false);
-	} else {
-		DBG("user on whitelist - access granted.\n");
-		close(fd);
-	}
-}
-#endif
 
 /* returns a malloced string */
 void create_file(struct file *f, const char *template)

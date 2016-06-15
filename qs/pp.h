@@ -1,7 +1,6 @@
 /**
  * @file pp.h
  * @brief preemption points
- * @author Ben Blum <bblum@andrew.cmu.edu>
  */
 
 #ifndef __ID_PP_H
