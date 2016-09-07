@@ -185,7 +185,7 @@ Output messages:
     by Quicksand, used only for equality comparison and parroted back to other
     MC instances via the config files.
   - content.dr.confirmed: True if the MC has classified the race as
-    "both-order" (see paper section 3.4, and paper citation [46]). Used for
+    "both-order" (see paper section 3.4, and paper citation [31]). Used for
     heuristic job priorities.
   - content.dr.deterministic: True if the MC observed the race on the first
     branch. Used for our "nondeterministic race" experiment (paper section
@@ -198,7 +198,7 @@ Output messages:
     proportion of the tree already explored.
   - content.estimate.elapsed_branches: Number completed interleavings tested
   - content.estimate.total_usecs: Estimated total time the state space will
-    take (counting elapsed time)
+    take (including elapsed time)
   - content.estimate.elapsed_usecs: self-explanatory
   - content.estimate.icb_cur_bound: Current ICB bound; ignored without "-I"
 - FOUND_A_BUG: Sent when the MC observes a failure. Fields:
@@ -209,7 +209,7 @@ Output messages:
 - SHOULD_CONTINUE: Sent whenever the MC is able to exit due to a time-out of
   the CPU budget. Landslide sends this message after each ESTIMATE message.
 - ASSERT_FAILED: Edit your assert infrastructure so that if your MC ever
-  crashes, it lets Quicksand know. Otherwise Quicksand will hang on a read.
+  crashes, it lets Quicksand know. Otherwise Quicksand will hang on a read().
   - content.crash_report.assert_message: A string to relay to the user.
 
 Input messages:
